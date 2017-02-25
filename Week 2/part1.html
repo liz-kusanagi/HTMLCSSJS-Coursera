@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Week 2 assignment: Color Guessing Game!</title>
+	</head>
+
+	<body onload="do_game()">
+		<script>			
+
+				var target;
+				var target_color;             
+				var guess_input;      
+				var finished = false;   
+				var guesses = 0;
+				var colors = ["azure", "blue", "brown", "green", "magenta", 
+			                  "mistyrose", "pink", "purple", "red", "teal", "yellow"];
+
+    			var random_number = Math.random() * colors.length;
+    			var random_number_integer = Math.floor(random_number);
+    			target = random_number_integer;
+    			target_color = colors[random_number_integer];
+
+    			alert("And that's why you always leave a note.");
+
+    			function do_game() {
+    			
+    				while (!finished) {
+        				guess_input = prompt("I am thinking of a color in this list: \n\n" +
+			            	colors + "Guess which one!"); 
+        				guesses += 1;   
+			        	if (correctColor()){
+			        		finished = true;
+			        	}
+    				}
+
+    				alert("You got it! The color was " + target_color + 
+			          ".\n\nIt took you " + guesses + 
+			          " guesses to get the color!");
+    				alert("This is " + target_color + " in all its glory!");
+    				myBody=document.getElementsByTagName("body")[0];
+			    	myBody.style.background=target_color;
+
+				}
+
+		
+			function correctColor() {
+			    if (guess_input == target_color) {
+			        return true;
+			    
+			    } else {
+			        alert("Sorry, try again!");
+			        return false;
+			    }	
+			        	
+			}
+			
+		</script>
+	</body>
+</HTML>
